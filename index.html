@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bio-Runner 3D - Edisi Hutan Realistis</title>
+    <link rel="stylesheet" href="style.css?v=6">
+    
+    <!-- Load Babylon.js -->
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+</head>
+<body>
+    <!-- Canvas 3D Babylon.js -->
+    <canvas id="renderCanvas"></canvas>
+
+    <!-- UI OVERLAY -->
+    <div id="ui-layer">
+        
+        <!-- Layar Efek Damage -->
+        <div id="damage-overlay"></div>
+
+        <!-- Kontrol HP (Tombol Sentuh) -->
+        <div id="mobile-controls">
+            <button id="btn-left" class="mobile-btn">◀️</button>
+            <button id="btn-jump" class="mobile-btn">🔼</button>
+            <button id="btn-right" class="mobile-btn">▶️</button>
+        </div>
+
+        <!-- Layar Utama / Start Menu -->
+        <div id="screen-start" class="screen active">
+            <div class="start-card">
+                <h1>🌿 Bio-Runner 3D</h1>
+                <p>Jelajahi hutan, lewati rintangan batu, kayu & ular, serta jawab kuis Biologi SMP!</p>
+                <div class="instructions">
+                    <span>📱 <b>HP:</b> Geser (Swipe) layar atau tekan tombol</span>
+                    <span>💻 <b>PC:</b> Panah Kiri/Kanan/Atas atau A/D/Spasi</span>
+                </div>
+                <button onclick="startGame()">MULAI PETUALANGAN</button>
+            </div>
+        </div>
+
+        <!-- HUD Game (Selalu tampil saat main) -->
+        <div id="screen-game-hud">
+            <div class="top-hud">
+                <div class="hp-container">
+                    <span id="hp-text">❤️❤️❤️</span>
+                </div>
+                <div class="coin-container">
+                    🪙 <span id="coin-score">0</span>
+                </div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div id="progress-fill"></div>
+                </div>
+                <div class="progress-text">
+                    <span>MULA</span>
+                    <span><b id="distance-score">0</b> / 1000 m</span>
+                    <span>PENAMAT 🏁</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel Kuis Popup -->
+        <div id="screen-quiz">
+            <div class="quiz-box">
+                <div class="quiz-header">
+                    <span class="badge">KUIS BIOLOGI SMP</span>
+                    <span class="timer">⏱️ <span id="quiz-timer">6</span>s</span>
+                </div>
+                <h3 id="quiz-question">Pertanyaan akan muncul di sini?</h3>
+                <div class="options-container">
+                    <div class="option" id="box-left">
+                        <div class="lane-label">◀ KIRI</div>
+                        <div id="opt-left" class="opt-text">Opsi 1</div>
+                    </div>
+                    <div class="option" id="box-center">
+                        <div class="lane-label">▲ TENGAH</div>
+                        <div id="opt-center" class="opt-text">Opsi 2</div>
+                    </div>
+                    <div class="option" id="box-right">
+                        <div class="lane-label">KANAN ▶</div>
+                        <div id="opt-right" class="opt-text">Opsi 3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Layar Game Over -->
+        <div id="screen-game-over" class="screen">
+            <div class="start-card">
+                <h1 id="end-title">GAME OVER</h1>
+                <p>Jarak Tempuh: <b><span id="end-distance">0</span> m</b></p>
+                <p>Koin Terkumpul: <b>🪙 <span id="end-coins">0</span></b></p>
+                <button onclick="window.location.reload()">Main Lagi 🔄</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="app.js?v=6"></script>
+</body>
+</html>
