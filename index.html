@@ -20,8 +20,15 @@
     <!-- UI OVERLAY -->
     <div id="ui-layer">
         
-        <!-- Layar Efek Damage (Merah berkedip saat tertabrak) -->
+        <!-- Layar Efek Damage -->
         <div id="damage-overlay" style="position: absolute; width:100%; height:100%; background: red; opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 5;"></div>
+
+        <!-- Kontrol HP (Tombol Sentuh) -->
+        <div id="mobile-controls">
+            <button id="btn-left" class="mobile-btn">◀️</button>
+            <button id="btn-jump" class="mobile-btn">🔼</button>
+            <button id="btn-right" class="mobile-btn">▶️</button>
+        </div>
 
         <!-- 1. Layar Pilih Peran -->
         <div id="screen-role" class="screen active">
@@ -67,7 +74,7 @@
             <button onclick="showScreen('screen-role')" class="btn-secondary">Kembali</button>
         </div>
 
-        <!-- 5. HUD Game (Muncul saat main) -->
+        <!-- 5. HUD Game -->
         <div id="screen-game-hud" class="screen">
             <div class="top-hud">
                 <div class="hp-container">
@@ -87,7 +94,7 @@
             </div>
         </div>
 
-        <!-- 6. Panel Kuis (Muncul popup saat lari) -->
+        <!-- 6. Panel Kuis -->
         <div id="screen-quiz" class="screen">
             <div class="quiz-box">
                 <div class="timer">Waktu: <span id="quiz-timer">5</span>s</div>
@@ -100,12 +107,12 @@
             </div>
         </div>
 
-        <!-- 7. Layar Game Over / Finish -->
+        <!-- 7. Layar Game Over -->
         <div id="screen-game-over" class="screen">
             <h1 id="end-title">GAME OVER</h1>
             <p>Jarak Tempuh: <span id="end-distance">0</span> m</p>
             <p>Koin Terkumpul: <span id="end-coins">0</span></p>
-            <button onclick="showScreen('screen-student-login')" class="btn-secondary">Main Lagi (Refresh)</button>
+            <button onclick="window.location.reload()" class="btn-secondary">Main Lagi</button>
         </div>
 
     </div>

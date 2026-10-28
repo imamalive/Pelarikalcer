@@ -26,6 +26,38 @@ body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden;
 #progress-fill { width: 0%; height: 100%; background: linear-gradient(90deg, #ffcc00, #ff6600); }
 .progress-text { display: flex; justify-content: space-between; font-size: 12px; margin-top: 5px; font-weight: bold; }
 
+/* KONTROL MOBILE (TOMBOL) */
+#mobile-controls {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    display: none; 
+    justify-content: space-around;
+    padding: 0 20px;
+    pointer-events: auto;
+    z-index: 15;
+}
+.mobile-btn {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    font-size: 24px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 3px solid #333;
+    box-shadow: 0 5px 0 #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.mobile-btn:active {
+    transform: translateY(5px);
+    box-shadow: none;
+}
+
 #screen-quiz { background: rgba(0, 0, 0, 0.5); justify-content: flex-start; padding-top: 120px; }
 .quiz-box { background: white; width: 90%; max-width: 500px; padding: 15px; border-radius: 15px; border: 3px solid #333; text-align: center; }
 .timer { color: red; font-weight: bold; margin-bottom: 10px; }
