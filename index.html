@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Game Edukasi Biologi 3D</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Bio-Runner 3D - Edisi Hutan Realistis</title>
+    <link rel="stylesheet" href="style.css?v=6">
     
     <!-- Load Babylon.js -->
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
@@ -28,10 +28,15 @@
 
         <!-- Layar Utama / Start Menu -->
         <div id="screen-start" class="screen active">
-            <h1>Bio-Runner 3D!</h1>
-            <p>Jawab pertanyaan Biologi sambil berlari!</p>
-            <p><i>Geser/Swipe layar untuk pindah jalur dan melompat, atau gunakan tombol di bawah.</i></p>
-            <button onclick="startGame()">MULAI BERMAIN</button>
+            <div class="start-card">
+                <h1>🌿 Bio-Runner 3D</h1>
+                <p>Jelajahi hutan, lewati rintangan batu, kayu & ular, serta jawab kuis Biologi SMP!</p>
+                <div class="instructions">
+                    <span>📱 <b>HP:</b> Geser (Swipe) layar atau tekan tombol</span>
+                    <span>💻 <b>PC:</b> Panah Kiri/Kanan/Atas atau A/D/Spasi</span>
+                </div>
+                <button onclick="startGame()">MULAI PETUALANGAN</button>
+            </div>
         </div>
 
         <!-- HUD Game (Selalu tampil saat main) -->
@@ -49,7 +54,9 @@
                     <div id="progress-fill"></div>
                 </div>
                 <div class="progress-text">
-                    MULA <span id="distance-score">0</span> / 1000 m PENAMAT
+                    <span>MULA</span>
+                    <span><b id="distance-score">0</b> / 1000 m</span>
+                    <span>PENAMAT 🏁</span>
                 </div>
             </div>
         </div>
@@ -57,26 +64,40 @@
         <!-- Panel Kuis Popup -->
         <div id="screen-quiz">
             <div class="quiz-box">
-                <div class="timer">Waktu: <span id="quiz-timer">5</span>s</div>
-                <h3 id="quiz-question">Pertanyaan</h3>
+                <div class="quiz-header">
+                    <span class="badge">KUIS BIOLOGI SMP</span>
+                    <span class="timer">⏱️ <span id="quiz-timer">6</span>s</span>
+                </div>
+                <h3 id="quiz-question">Pertanyaan akan muncul di sini?</h3>
                 <div class="options-container">
-                    <div class="option"><b>KIRI</b><br><span id="opt-left">Opsi 1</span></div>
-                    <div class="option"><b>TENGAH</b><br><span id="opt-center">Opsi 2</span></div>
-                    <div class="option"><b>KANAN</b><br><span id="opt-right">Opsi 3</span></div>
+                    <div class="option" id="box-left">
+                        <div class="lane-label">◀ KIRI</div>
+                        <div id="opt-left" class="opt-text">Opsi 1</div>
+                    </div>
+                    <div class="option" id="box-center">
+                        <div class="lane-label">▲ TENGAH</div>
+                        <div id="opt-center" class="opt-text">Opsi 2</div>
+                    </div>
+                    <div class="option" id="box-right">
+                        <div class="lane-label">KANAN ▶</div>
+                        <div id="opt-right" class="opt-text">Opsi 3</div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Layar Game Over -->
         <div id="screen-game-over" class="screen">
-            <h1 id="end-title">GAME OVER</h1>
-            <p>Jarak Tempuh: <span id="end-distance">0</span> m</p>
-            <p>Koin Terkumpul: <span id="end-coins">0</span></p>
-            <button onclick="window.location.reload()">Main Lagi</button>
+            <div class="start-card">
+                <h1 id="end-title">GAME OVER</h1>
+                <p>Jarak Tempuh: <b><span id="end-distance">0</span> m</b></p>
+                <p>Koin Terkumpul: <b>🪙 <span id="end-coins">0</span></b></p>
+                <button onclick="window.location.reload()">Main Lagi 🔄</button>
+            </div>
         </div>
 
     </div>
 
-    <script src="app.js"></script>
+    <script src="app.js?v=6"></script>
 </body>
 </html>
