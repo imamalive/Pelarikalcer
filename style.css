@@ -1,0 +1,49 @@
+* { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #333; touch-action: none; }
+
+#renderCanvas { 
+    width: 100vw; height: 100vh; touch-action: none; position: absolute; 
+    top: 0; left: 0; z-index: 1; outline: none; display: block; 
+}
+
+#ui-layer { position: absolute; width: 100%; height: 100%; z-index: 10; pointer-events: none; }
+
+.screen { position: absolute; width: 100%; height: 100%; display: none; flex-direction: column; align-items: center; justify-content: center; background: rgba(240, 248, 255, 0.95); pointer-events: auto; }
+.screen.active { display: flex; }
+
+#damage-overlay { position: absolute; width:100%; height:100%; background: red; opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 5; }
+
+/* HUD */
+#screen-game-hud { display: none; position: absolute; top: 0; left: 0; width: 100%; flex-direction: column; align-items: center; padding: 15px; pointer-events: none; z-index: 11;}
+.top-hud { display: flex; justify-content: space-between; width: 100%; max-width: 500px; margin-bottom: 10px; }
+.hp-container, .coin-container { background: white; padding: 8px 15px; border-radius: 20px; border: 2px solid #333; font-weight: bold; box-shadow: 0 4px 0 #ccc; }
+.progress-container { width: 100%; max-width: 500px; background: white; padding: 10px; border-radius: 15px; border: 2px solid #333; }
+.progress-bar { width: 100%; height: 15px; background: #eee; border-radius: 10px; border: 1px solid #999; overflow: hidden; }
+#progress-fill { width: 0%; height: 100%; background: linear-gradient(90deg, #ffcc00, #ff6600); }
+.progress-text { display: flex; justify-content: space-between; font-size: 12px; margin-top: 5px; font-weight: bold; }
+
+/* KONTROL MOBILE (TOMBOL) */
+#mobile-controls {
+    position: absolute; bottom: 15%; left: 0; width: 100%; display: none; 
+    justify-content: space-around; padding: 0 10%; pointer-events: auto; z-index: 15;
+}
+.mobile-btn {
+    width: 70px; height: 70px; border-radius: 50%; font-size: 28px; background: rgba(255, 255, 255, 0.7);
+    border: 3px solid #333; box-shadow: 0 5px 0 #666; display: flex; align-items: center; justify-content: center;
+    padding: 0; margin: 0; user-select: none; -webkit-user-select: none;
+}
+.mobile-btn:active { transform: translateY(5px); box-shadow: none; background: rgba(200, 200, 200, 0.9); }
+
+/* KUIS POPUP */
+#screen-quiz { 
+    display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+    background: rgba(0, 0, 0, 0.3); flex-direction: column; align-items: center; padding-top: 130px; z-index: 12;
+}
+.quiz-box { background: white; width: 90%; max-width: 500px; padding: 15px; border-radius: 15px; border: 3px solid #333; text-align: center; }
+.timer { color: red; font-size: 18px; font-weight: bold; margin-bottom: 10px; }
+.options-container { display: flex; justify-content: space-between; margin-top: 15px; gap: 5px; }
+.option { flex: 1; background: #f0f0f0; border: 2px solid #333; padding: 10px 2px; border-radius: 10px; font-size: 13px; }
+
+h1 { margin-top: 0; }
+button { padding: 15px 30px; margin: 10px 5px; border: none; border-radius: 10px; background: #4CAF50; color: white; font-weight: bold; font-size: 16px; cursor: pointer; box-shadow: 0 5px 0 #2E7D32; pointer-events: auto;}
+button:active { transform: translateY(5px); box-shadow: none; }
