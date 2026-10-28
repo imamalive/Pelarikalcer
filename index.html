@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Game Edukasi 3D - Runner Kuis</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Load Babylon.js (Untuk Fase Selanjutnya) -->
+    
+    <!-- Firebase SDK (Compat Version) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+    <!-- Load Babylon.js (Untuk Fase 3) -->
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
 </head>
 <body>
@@ -46,7 +51,8 @@
                     <option value="tengah">Jawaban Benar: Tengah</option>
                     <option value="kanan">Jawaban Benar: Kanan</option>
                 </select>
-                <button onclick="alert('Fase 2: Akan disambung ke Firebase')">Simpan Soal</button>
+                <!-- Tombol ini sudah diupdate untuk memanggil Firebase -->
+                <button onclick="saveQuestion()">Simpan Soal</button>
             </div>
             <button onclick="showScreen('screen-role')" class="btn-secondary">Keluar</button>
         </div>
