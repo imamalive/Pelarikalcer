@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Game Edukasi 3D - Runner Kuis</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Firebase SDK (Compat Version) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+    <!-- Load Babylon.js -->
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+</head>
+<body>
+    <!-- Canvas 3D Babylon.js -->
+    <canvas id="renderCanvas"></canvas>
+
+    <!-- UI OVERLAY -->
+    <div id="ui-layer">
+        
+        <!-- Layar Efek Damage (Merah berkedip saat tertabrak) -->
+        <div id="damage-overlay" style="position: absolute; width:100%; height:100%; background: red; opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 5;"></div>
+
+        <!-- 1. Layar Pilih Peran -->
+        <div id="screen-role" class="screen active">
+            <h1>Game Edukasi Runner</h1>
+            <button onclick="showScreen('screen-student-login')">Masuk sebagai Siswa</button>
+            <br><br>
+            <button onclick="showScreen('screen-teacher-login')" class="btn-secondary">Masuk sebagai Guru</button>
+        </div>
+
+        <!-- 2. Layar Login Guru -->
+        <div id="screen-teacher-login" class="screen">
+            <h2>Area Guru</h2>
+            <p>Masukkan Kode PIN:</p>
+            <input type="password" id="teacher-pin" placeholder="Contoh: GURU123">
+            <button onclick="loginTeacher()">Masuk</button>
+            <button onclick="showScreen('screen-role')" class="btn-secondary">Kembali</button>
+        </div>
+
+        <!-- 3. Dashboard Guru -->
+        <div id="screen-teacher-dashboard" class="screen">
+            <h2>Dashboard Guru</h2>
+            <div class="dashboard-section">
+                <h3>Tambah Soal</h3>
+                <input type="text" id="q-text" placeholder="Pertanyaan Soal">
+                <input type="text" id="q-left" placeholder="Opsi Kiri (X: -2)">
+                <input type="text" id="q-center" placeholder="Opsi Tengah (X: 0)">
+                <input type="text" id="q-right" placeholder="Opsi Kanan (X: 2)">
+                <select id="q-answer">
+                    <option value="kiri">Jawaban Benar: Kiri</option>
+                    <option value="tengah">Jawaban Benar: Tengah</option>
+                    <option value="kanan">Jawaban Benar: Kanan</option>
+                </select>
+                <button onclick="saveQuestion()">Simpan Soal</button>
+            </div>
+            <button onclick="showScreen('screen-role')" class="btn-secondary">Keluar</button>
+        </div>
+
+        <!-- 4. Layar Login Siswa -->
+        <div id="screen-student-login" class="screen">
+            <h2>Selamat Datang!</h2>
+            <input type="text" id="student-name" placeholder="Nama Lengkap Kamu">
+            <button onclick="startGame()">MAIN SEKARANG</button>
+            <button onclick="showScreen('screen-role')" class="btn-secondary">Kembali</button>
+        </div>
+
+        <!-- 5. HUD Game (Muncul saat main) -->
+        <div id="screen-game-hud" class="screen">
+            <div class="top-hud">
+                <div class="hp-container">
+                    <span id="hp-text">❤️❤️❤️</span>
+                </div>
+                <div class="coin-container">
+                    🪙 <span id="coin-score">0</span>
+                </div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div id="progress-fill"></div>
+                </div>
+                <div class="progress-text">
+                    MULA <span id="distance-score">0</span> / 1000 m PENAMAT
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. Panel Kuis (Muncul popup saat lari) -->
+        <div id="screen-quiz" class="screen">
+            <div class="quiz-box">
+                <div class="timer">Waktu: <span id="quiz-timer">5</span>s</div>
+                <h3 id="quiz-question">Pertanyaan akan muncul di sini?</h3>
+                <div class="options-container">
+                    <div class="option"><b>KIRI</b><br><span id="opt-left">Opsi 1</span></div>
+                    <div class="option"><b>TENGAH</b><br><span id="opt-center">Opsi 2</span></div>
+                    <div class="option"><b>KANAN</b><br><span id="opt-right">Opsi 3</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. Layar Game Over / Finish -->
+        <div id="screen-game-over" class="screen">
+            <h1 id="end-title">GAME OVER</h1>
+            <p>Jarak Tempuh: <span id="end-distance">0</span> m</p>
+            <p>Koin Terkumpul: <span id="end-coins">0</span></p>
+            <button onclick="showScreen('screen-student-login')" class="btn-secondary">Main Lagi (Refresh)</button>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
